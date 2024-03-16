@@ -1,0 +1,54 @@
+                            
+                                  ## Learn Context API ##
+
+##in folder context  component global##
+
+*Step 1: Create a Context :
+
+👉 const CounterContext = createContext();
+
+*Step 2: Create a Provider component :
+
+👉 const CounterProvider = ({ children }) => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  const decrement = () => {
+    setCount((prevCount) => prevCount - 1);
+  };
+
+  return (
+    <CounterContext.Provider value={{ count, increment, decrement }}>
+      {children}
+    </CounterContext.Provider>
+  );
+};
+
+👉Step 3: Create a custom hook to consume the context
+
+const useCounter = () => {
+  return useContext(CounterContext);
+};
+
+export { CounterProvider, useCounter };
+
+
+## component child##
+
+
+👉Step 4: Use the context in any component
+
+import { useCounter } from "../context/ContextApi";
+
+export default function CounterDisplay() {
+  const { count } = useCounter();👈
+
+  return (
+    <div className="text-center text-2xl text-emerald-300">
+      Count: <span className="font-bold ">{count}</span>
+    </div>
+  );
+}
