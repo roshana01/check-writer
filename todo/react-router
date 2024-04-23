@@ -1,0 +1,35 @@
+//todo => document update react-router
+
+import About from "../pages/About/About";
+import Account from "../pages/Account/Account";
+import Details from "../pages/Account/Details/Details";
+import Applications from "../pages/Account/Applications/Applications";
+import Trophies from "../pages/Account/Trophies/Trophies";
+import Settings from "../pages/Account/Settings/Settings";
+import Logout from "../pages/Account/Logout/Logout";
+import Home from "../pages/Home/Home";
+import NotFound from "../pages/NotFound/NotFound";
+import Habit from "../pages/Products/Applications/Habit/Habit";
+import Contact from "../pages/Contact/Contact";
+
+const routes = [
+  { path: "/", element: <Home />, breadcrumb: "Home" },
+  { path: "/about", element: <About />, breadcrumb: "About" },
+  {
+    path: "/account",
+    element: <Account />,
+    breadcrumb: "Account",
+    children: [
+      { path: "details", element: <Details />, breadcrumb: "Details" },
+      { path: "applications", element: <Applications />, breadcrumb: "Applications" },
+      { path: "trophies", element: <Trophies />, breadcrumb: "Trophies" },
+      { path: "settings", element: <Settings />, breadcrumb: "Settings" },
+      { path: "logout", element: <Logout />, breadcrumb: "Logout" },
+    ],
+  },
+  { path: "/products/habbit", element: <Habit />, breadcrumb: "Habit" },
+  { path: "/contact", element: <Contact/>, breadcrumb: "Contact Us" },
+  { path: "*", element: <NotFound />, breadcrumb: "Not Found" },
+];
+
+export default routes;
